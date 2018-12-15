@@ -6,15 +6,14 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 12:46:07 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 15:02:40 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-extern int		g_mat[106][106];
+extern int		g_mat[20][20];
 extern t_piece	g_tetris[26];
-//extern int		g_nb_piece;
 
 void				clean_matrice_from(int value, int nb_pieces)
 {
@@ -22,10 +21,10 @@ void				clean_matrice_from(int value, int nb_pieces)
 	int j;
 
 	j = 0;
-	while (j < 106)
+	while (j < 20)
 	{
 		i = 0;
-		while (i < 106)
+		while (i < 20)
 		{
 			if (g_mat[i][j] >= value)
 				g_mat[i][j] = 0;

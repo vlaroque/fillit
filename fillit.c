@@ -6,25 +6,22 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:36 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 12:46:05 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 15:00:07 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			g_mat[106][106];
-int			g_nb_piece = 0;
+int			g_mat[20][20];
 t_piece		g_tetris[26];
-int			g_x_max;
-int			g_y_max;
 
-static void		determine_square_min(void)
+static int		determine_square_min(int nb_pieces)
 {
 	int	val;
 	int	i;
 	int	tmp;
 
-	tmp = g_nb_piece * 4;
+	tmp = nb_pieces * 4;
 	val = ft_sqrt(tmp);
 	if (!val)
 	{
@@ -35,8 +32,7 @@ static void		determine_square_min(void)
 			i++;
 		}
 	}
-	g_x_max = val;
-	g_y_max = val;
+	return (val);
 }
 
 /*void			print_strtab(t_piece **pieces)
@@ -91,7 +87,6 @@ int				rempli_structure(t_piece *pieces)
 		}
 		ind++;
 	}
-	g_nb_piece = ind;
 	return (ind);
 }
 
@@ -110,9 +105,8 @@ int				main(int ac, char **av)
 		return (0);
 	}
 	rempli_structure(res);
-	determine_square_min();
 	initialize_matrice();
-	if (!i_check_solution(nb_pieces))
+	if (!i_check_solution(nb_pieces, determine_square_min(nb_pieces)))
 	{
 		ft_putstr("error\n");
 		return (0);

@@ -21,3 +21,5 @@ i_check_solution() == solution.c
 				clean_matrice_from	NDi
 
 time fillit petitegrille : 5.63s
+
+time fillit minigrille : 4.76s

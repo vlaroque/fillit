@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:16:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 12:55:10 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:49:11 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 extern int			g_mat[20][20];
 extern t_piece		g_tetris[26];
-//extern int			g_nb_piece;
 int					g_k;
 
 static void			make_iter(int *size, int *xstart, int *ystart, int nb_pieces)
@@ -60,17 +59,15 @@ static void			make_init(int *xstart, int *ystart)
 	g_k++;
 }
 
-int					i_check_solution(int nb_pieces)
+int					i_check_solution(int nb_pieces, int size)
 {
 	int ret;
-	int size;
 	int xstart;
 	int ystart;
 
 	g_k = 0;
 	xstart = 0;
 	ystart = 0;
-	size = 0;
 	ret = 1;
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:59 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 12:45:44 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:49:25 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ int				ft_sqrt_plus(int nbr);
 void			clean_matrice_from(int value, int nb_pieces);
 int				i_check_tetris(t_piece *tetris, int *ref_col,
 								int *ref_lin, int *size);
-
-int				i_check_solution(int nb_pieces);
-
+int				i_check_solution(int nb_pieces, int min_size);
 int				ft_sqrt(int nb);
 void			clean_tetris(void);
 void			initialize_matrice(void);
