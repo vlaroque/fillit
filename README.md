@@ -20,10 +20,12 @@ i_check_solution() == solution.c
 			> next_position
 				clean_matrice_from	NDi
 
-time fillit petitegrille : 5.63s
+* time fillit petitegrille : 5.63s
 
-grille de tab reduite.
-	time fillit minigrille : 4.76s
-
-supression variables globales
-	time fillit minigrille : 0.36s
+* grille de tab reduite.
+	* time fillit minigrille : 4.76s
+	* time fillit petitegrille : 1500s
+* supression variables globales
+	* time fillit minigrille : 0.35s
+	* time fillit petitegrille : 128.19s
+	* time fillit demigrille : 447.25s

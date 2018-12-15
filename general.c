@@ -6,14 +6,14 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:44 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 16:21:28 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 17:19:19 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 //extern int		g_mat[20][20];
-extern t_piece	g_tetris[26];
+//extern t_piece	g_tetris[26];
 
 int				ft_sqrt(int nb)
 {
@@ -108,7 +108,7 @@ void			print_matrice(int mat[20][20], int size)
 
 int				next_position(int mat[20][20], t_piece *tetris, int *size, int nb_pieces)
 {
-	clean_matrice_from(mat, tetris->letter, nb_pieces);
+	clean_matrice_from(mat, tetris, tetris->letter, nb_pieces);
 	(*size)++;
 	tetris->posx = 0;
 	tetris->posy = 0;

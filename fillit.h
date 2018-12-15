@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:59 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 16:15:45 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 17:19:22 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int				ft_num(int nbr, char position);
 int				*ft_tetrimino_tab(int *tetri);
 t_piece			*file_analyser(int fd, int *nbr);
 int				ft_sqrt_plus(int nbr);
-void			clean_matrice_from(int mat[20][20], int value, int nb_pieces);
+
+void			clean_matrice_from(int mat[20][20], t_piece *pieces, int value, int nb_pieces);
 int				i_check_tetris(int mat[20][20], t_piece *tetris, int *ref_col, int *ref_lin, int *size);
-int				i_check_solution(int nb_pieces, int min_size);
+int				i_check_solution(int nb_pieces, int min_size, t_piece *pieces);
 int				ft_sqrt(int nb);
-void			clean_tetris(void);
 void			initialize_matrice(int mat[20][20]);
 void			print_matrice(int mat[20][20], int size);
 int				next_position(int mat[20][20], t_piece *tetris, int *size, int nb_pieces);
