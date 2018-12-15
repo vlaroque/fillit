@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:44 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 15:03:01 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 16:21:28 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-extern int		g_mat[20][20];
+//extern int		g_mat[20][20];
 extern t_piece	g_tetris[26];
 
 int				ft_sqrt(int nb)
@@ -64,7 +64,7 @@ int				ft_sqrt(int nb)
 	}
 }*/
 
-void			initialize_matrice(void)
+void			initialize_matrice(int mat[20][20])
 {
 	int i;
 	int j;
@@ -75,14 +75,14 @@ void			initialize_matrice(void)
 		i = 0;
 		while (i < 20)
 		{
-			g_mat[i][j] = 0;
+			mat[i][j] = 0;
 			i++;
 		}
 		j++;
 	}
 }
 
-void			print_matrice(int size)
+void			print_matrice(int mat[20][20], int size)
 {
 	int i;
 	int j;
@@ -93,9 +93,9 @@ void			print_matrice(int size)
 		j = 0;
 		while (j < size)
 		{
-			if (g_mat[i][j])
+			if (mat[i][j])
 			{
-				ft_putchar(g_mat[i][j]);
+				ft_putchar(mat[i][j]);
 			}
 			else
 				ft_putchar('.');
@@ -106,9 +106,9 @@ void			print_matrice(int size)
 	}
 }
 
-int				next_position(t_piece *tetris, int *size, int nb_pieces)
+int				next_position(int mat[20][20], t_piece *tetris, int *size, int nb_pieces)
 {
-	clean_matrice_from(tetris->letter, nb_pieces);
+	clean_matrice_from(mat, tetris->letter, nb_pieces);
 	(*size)++;
 	tetris->posx = 0;
 	tetris->posy = 0;

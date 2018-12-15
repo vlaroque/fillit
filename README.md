@@ -22,4 +22,8 @@ i_check_solution() == solution.c
 
 time fillit petitegrille : 5.63s
 
-time fillit minigrille : 4.76s
+grille de tab reduite.
+	time fillit minigrille : 4.76s
+
+supression variables globales
+	time fillit minigrille : 0.36s

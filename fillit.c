@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:36 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 15:00:07 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 15:50:27 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			g_mat[20][20];
+//int			g_mat[20][20];
 t_piece		g_tetris[26];
 
 static int		determine_square_min(int nb_pieces)
@@ -105,7 +105,7 @@ int				main(int ac, char **av)
 		return (0);
 	}
 	rempli_structure(res);
-	initialize_matrice();
+	//initialize_matrice();
 	if (!i_check_solution(nb_pieces, determine_square_min(nb_pieces)))
 	{
 		ft_putstr("error\n");
