@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:44 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 11:22:14 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 11:59:48 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				ft_sqrt(int nb)
 	return (0);
 }
 
-void			clean_tetris(void)
+/*void			clean_tetris(void)
 {
 	int	i;
 	int k;
@@ -63,7 +63,7 @@ void			clean_tetris(void)
 		}
 		i++;
 	}
-}
+}*/
 
 void			initialize_matrice(void)
 {

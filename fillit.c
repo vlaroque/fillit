@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:36 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 10:43:09 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 12:14:32 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int				main(int ac, char **av)
 	rempli_structure(res);
 	determine_square_min();
 	initialize_matrice();
-	if (!i_check_solution())
+	if (!i_check_solution()
 	{
 		ft_putstr("error\n");
 		return (0);

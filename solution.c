@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:16:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 11:23:12 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 11:25:24 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 extern int			g_mat[106][106];
 extern t_piece		g_tetris[26];
 extern int			g_nb_piece;
-//extern int		g_x_max;
-//extern int		g_y_max;
 int					g_xstart;
 int					g_ystart;
 int					g_k;
@@ -93,7 +91,5 @@ int					i_check_solution(void)
 				make_move(&size);
 		}
 	}
-	//printf("---------------val(%d)(%d)\n", x_max, y_max);
-	//print_matrice(x_max, y_max);
 	return (1);
 }
