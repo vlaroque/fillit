@@ -18,4 +18,6 @@ i_check_solution() == solution.c
 			> clean_matrice_from	ND		supprimes toutes les lettres apres l'ASCII value 
 											et met toutes les positions de celles ci a 0 dans le tableau
 			> next_position
-				clean_matrice_from	ND
+				clean_matrice_from	NDi
+
+time fillit petitegrille : 5.63s

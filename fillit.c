@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:36 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 12:14:32 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 12:46:05 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,13 @@ int				rempli_structure(t_piece *pieces)
 int				main(int ac, char **av)
 {
 	int		fd;
+	int		nb_pieces;
 	t_piece	*res;
 
 	if (ac != 2)
 		ft_putstr("usage: fillit [filename]\n");
 	fd = open(av[1], O_RDONLY);
-	if (fd <= 0 || !(res = file_analyser(fd)))
+	if (fd <= 0 || !(res = file_analyser(fd, &nb_pieces)))
 	{
 		ft_putstr("error\n");
 		return (0);
@@ -111,7 +112,7 @@ int				main(int ac, char **av)
 	rempli_structure(res);
 	determine_square_min();
 	initialize_matrice();
-	if (!i_check_solution()
+	if (!i_check_solution(nb_pieces))
 	{
 		ft_putstr("error\n");
 		return (0);

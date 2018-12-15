@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 11:21:02 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 12:46:07 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 extern int		g_mat[106][106];
 extern t_piece	g_tetris[26];
-extern int		g_nb_piece;
+//extern int		g_nb_piece;
 
-void				clean_matrice_from(int value)
+void				clean_matrice_from(int value, int nb_pieces)
 {
 	int i;
 	int j;
@@ -36,7 +36,7 @@ void				clean_matrice_from(int value)
 	if (value == 'A')
 	{
 		i = value - 'A';
-		while (i < g_nb_piece)
+		while (i < nb_pieces)
 		{
 			g_tetris[i].posx = 0;
 			g_tetris[i].posy = 0;

@@ -6,89 +6,89 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:16:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 11:25:24 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 12:55:10 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-extern int			g_mat[106][106];
+extern int			g_mat[20][20];
 extern t_piece		g_tetris[26];
-extern int			g_nb_piece;
-int					g_xstart;
-int					g_ystart;
+//extern int			g_nb_piece;
 int					g_k;
 
-static void			make_iter(int *size)
+static void			make_iter(int *size, int *xstart, int *ystart, int nb_pieces)
 {
-	g_xstart = g_tetris[g_k].posx;
-	g_ystart = g_tetris[g_k].posy;
-	clean_matrice_from(g_tetris[g_k].letter);
-	if (g_xstart < *size - 1)
-		g_xstart++;
-	else if (g_ystart < *size - 1)
+	*xstart = g_tetris[g_k].posx;
+	*ystart = g_tetris[g_k].posy;
+	clean_matrice_from(g_tetris[g_k].letter, nb_pieces);
+	if (*xstart < *size - 1)
+		(*xstart)++;
+	else if (*ystart < *size - 1)
 	{
-		g_xstart = 0;
-		g_ystart++;
+		*xstart = 0;
+		(*ystart)++;
 	}
 	else
 	{
-		g_xstart = 0;
-		g_ystart = 0;
-		next_position(&g_tetris[g_k], size);
+		*xstart = 0;
+		*ystart = 0;
+		next_position(&g_tetris[g_k], size, nb_pieces);
 	}
 }
 
-static void			make_move(int *size)
+static void			make_move(int *size, int *xstart, int *ystart, int nb_pieces)
 {
 	if (g_k == 0)
 	{
-		g_xstart = 0;
-		g_ystart = 0;
-		next_position(&g_tetris[g_k], size);
+		*xstart = 0;
+		*ystart = 0;
+		next_position(&g_tetris[g_k], size, nb_pieces);
 		return ;
 	}
 	if (g_k)
 		g_k--;
-	make_iter(size);
+	make_iter(size, xstart, ystart, nb_pieces);
 }
 
-static void			make_init(void)
+static void			make_init(int *xstart, int *ystart)
 {
-	g_tetris[g_k].posx = g_xstart;
-	g_tetris[g_k].posy = g_ystart;
-	g_xstart = 0;
-	g_ystart = 0;
+	g_tetris[g_k].posx = *xstart;
+	g_tetris[g_k].posy = *ystart;
+	*xstart = 0;
+	*ystart = 0;
 	g_k++;
 }
 
-int					i_check_solution(void)
+int					i_check_solution(int nb_pieces)
 {
 	int ret;
 	int size;
+	int xstart;
+	int ystart;
 
 	g_k = 0;
-	g_xstart = 0;
-	g_ystart = 0;
+	xstart = 0;
+	ystart = 0;
 	size = 0;
 	ret = 1;
 	while (1)
 	{
-		while (g_k < g_nb_piece)
+		while (g_k < nb_pieces)
 		{
-			while ((ret = i_check_tetris(&g_tetris[g_k], &g_xstart, &g_ystart, &size)))
+			while ((ret = i_check_tetris(&g_tetris[g_k], &xstart, &ystart, &size)))
 			{
-				make_init();
-				if (g_k == g_nb_piece && ret)
+				make_init(&xstart, &ystart);
+				if (g_k == nb_pieces && ret)
 					break ;
 			}
-			if (g_k == g_nb_piece && ret)
+			if (g_k == nb_pieces && ret)
 			{
 				print_matrice(size);
 				return (1);
 			}
 			if (!ret)
-				make_move(&size);
+				make_move(&size, &xstart, &ystart, nb_pieces);
 		}
 	}
 	return (1);
