@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:59 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 17:19:22 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 18:10:04 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include "libft.h"
+# include <stdlib.h>
 
 # define BUFF_SIZE 547
 

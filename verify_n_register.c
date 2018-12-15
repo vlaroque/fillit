@@ -6,12 +6,11 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:13:34 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 13:49:13 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 18:13:03 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdlib.h>
 
 void	tetri_filler(t_piece *onepiece, int pce, int shape)
 {

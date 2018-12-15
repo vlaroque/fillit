@@ -6,14 +6,11 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:44 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 17:19:19 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 18:13:34 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-//extern int		g_mat[20][20];
-//extern t_piece	g_tetris[26];
 
 int				ft_sqrt(int nb)
 {
@@ -36,33 +33,6 @@ int				ft_sqrt(int nb)
 	}
 	return (0);
 }
-
-/*void			clean_tetris(void)
-{
-	int	i;
-	int k;
-	int j;
-
-	i = 0;
-	while (i < 26)
-	{
-		g_tetris[i].letter = 0;
-		g_tetris[i].posx = 0;
-		g_tetris[i].posy = 0;
-		k = 0;
-		while (k < 4)
-		{
-			j = 0;
-			while (j < 4)
-			{
-				g_tetris[i].tab[k][j] = 0;
-				j++;
-			}
-			k++;
-		}
-		i++;
-	}
-}*/
 
 void			initialize_matrice(int mat[20][20])
 {
