@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:16:36 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 10:05:29 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 10:43:09 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int				rempli_structure(t_piece *pieces)
 	int j;
 
 	ind = 0;
-	while (ind < 27)
+	while (pieces[ind].letter != 0)
 	{
 		g_tetris[ind].letter = pieces[ind].letter;
 		i = 0;
