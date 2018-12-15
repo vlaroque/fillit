@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 18:36:10 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 20:57:20 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void				clean_matrice_from(char mat[20][20], t_piece *pieces, int value, int nb_
 	}
 }
 
-static int			i_clone_matrice(char mat[20][20], t_piece *pieces, int ref_col,
-						int ref_lin)
+static int			i_clone_matrice(char mat[20][20], t_piece *pieces, t_pos *pos)
 {
 	int i;
 	int j;
@@ -54,18 +53,17 @@ static int			i_clone_matrice(char mat[20][20], t_piece *pieces, int ref_col,
 		while (j < 4)
 		{
 			if (pieces->tab[i][j])
-				mat[ref_lin + i][ref_col + j] = pieces->tab[i][j];
+				mat[pos->y + i][pos->x + j] = pieces->tab[i][j];
 			j++;
 		}
 		i++;
 	}
-	pieces->posx = ref_col;
-	pieces->posy = ref_lin;
+	pieces->posx = pos->x;
+	pieces->posy = pos->y;
 	return (1);
 }
 
-static int			i_touch_tetris(char mat[20][20], t_piece *pieces, int *ref_col,
-					int *ref_lin, int *size)
+static int			i_touch_tetris(char mat[20][20], t_piece *pieces, t_pos *pos, int *size)
 {
 	int i;
 	int j;
@@ -78,10 +76,10 @@ static int			i_touch_tetris(char mat[20][20], t_piece *pieces, int *ref_col,
 		j = 0;
 		while (j < 4 && !i_touch)
 		{
-			if (pieces->tab[i][j] && ((*ref_lin + i) >= *size ||
-						(*ref_col + j) >= *size))
+			if (pieces->tab[i][j] && ((pos->y + i) >= *size ||
+						(pos->x + j) >= *size))
 				i_touch = 2;
-			else if (pieces->tab[i][j] && mat[*ref_lin + i][*ref_col + j])
+			else if (pieces->tab[i][j] && mat[pos->y + i][pos->x + j])
 				i_touch = 1;
 			j++;
 		}
@@ -90,26 +88,25 @@ static int			i_touch_tetris(char mat[20][20], t_piece *pieces, int *ref_col,
 	return (i_touch);
 }
 
-int					i_check_tetris(char mat[20][20], t_piece *pieces, int *ref_col,
-					int *ref_lin, int *size)
+int					i_check_tetris(char mat[20][20], t_piece *pieces, t_pos *pos, int *size)
 {
 	int i_touch;
 	int ret;
 
-	i_touch = i_touch_tetris(mat, pieces, ref_col, ref_lin, size);
+	i_touch = i_touch_tetris(mat, pieces, pos, size);
 	if (!i_touch)
 	{
-		ret = i_clone_matrice(mat, pieces, *ref_col, *ref_lin);
+		ret = i_clone_matrice(mat, pieces, pos);
 		return (ret);
 	}
-	if (*ref_col < *size - 1)
-		*ref_col = *ref_col + 1;
-	else if (*ref_lin < *size - 1)
+	if (pos->x < *size - 1)
+		pos->x = pos->x + 1;
+	else if (pos->y < *size - 1)
 	{
-		*ref_col = 0;
-		*ref_lin = *ref_lin + 1;
+		pos->x = 0;
+		pos->y = pos->y + 1;
 	}
 	else
 		return (0);
-	return (i_check_tetris(mat, pieces, ref_col, ref_lin, size));
+	return (i_check_tetris(mat, pieces, pos, size));
 }
