@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:44 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/14 12:50:49 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 11:22:14 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ void			initialize_matrice(void)
 	}
 }
 
-void			print_matrice(int x_max, int y_max)
+void			print_matrice(int size)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (i < x_max)
+	while (i < size)
 	{
 		j = 0;
-		while (j < y_max)
+		while (j < size)
 		{
 			if (g_mat[i][j])
 			{
@@ -107,11 +107,10 @@ void			print_matrice(int x_max, int y_max)
 	}
 }
 
-int				next_position(t_piece *tetris, int *x_max, int *y_max)
+int				next_position(t_piece *tetris, int *size)
 {
 	clean_matrice_from(tetris->letter);
-	(*x_max)++;
-	(*y_max)++;
+	(*size)++;
 	tetris->posx = 0;
 	tetris->posy = 0;
 	return (1);

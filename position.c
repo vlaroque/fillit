@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/14 12:41:06 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 11:21:02 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int			i_clone_matrice(t_piece *g_tetris, int ref_col,
 }
 
 static int			i_touch_tetris(t_piece *g_tetris, int *ref_col,
-					int *ref_lin, int *x_max, int *y_max)
+					int *ref_lin, int *size)
 {
 	int i;
 	int j;
@@ -82,8 +82,8 @@ static int			i_touch_tetris(t_piece *g_tetris, int *ref_col,
 		j = 0;
 		while (j < 4 && !i_touch)
 		{
-			if (g_tetris->tab[i][j] && ((*ref_lin + i) >= *x_max ||
-						(*ref_col + j) >= *y_max))
+			if (g_tetris->tab[i][j] && ((*ref_lin + i) >= *size ||
+						(*ref_col + j) >= *size))
 				i_touch = 2;
 			else if (g_tetris->tab[i][j] && g_mat[*ref_lin + i][*ref_col + j])
 				i_touch = 1;
@@ -95,25 +95,25 @@ static int			i_touch_tetris(t_piece *g_tetris, int *ref_col,
 }
 
 int					i_check_tetris(t_piece *g_tetris, int *ref_col,
-					int *ref_lin, int *x_max, int *y_max)
+					int *ref_lin, int *size)
 {
 	int i_touch;
 	int ret;
 
-	i_touch = i_touch_tetris(g_tetris, ref_col, ref_lin, x_max, y_max);
+	i_touch = i_touch_tetris(g_tetris, ref_col, ref_lin, size);
 	if (!i_touch)
 	{
 		ret = i_clone_matrice(g_tetris, *ref_col, *ref_lin);
 		return (ret);
 	}
-	if (*ref_col < *x_max - 1)
+	if (*ref_col < *size - 1)
 		*ref_col = *ref_col + 1;
-	else if (*ref_lin < *y_max - 1)
+	else if (*ref_lin < *size - 1)
 	{
 		*ref_col = 0;
 		*ref_lin = *ref_lin + 1;
 	}
 	else
 		return (0);
-	return (i_check_tetris(g_tetris, ref_col, ref_lin, x_max, y_max));
+	return (i_check_tetris(g_tetris, ref_col, ref_lin, size));
 }
