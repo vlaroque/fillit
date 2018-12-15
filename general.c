@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:44 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 18:13:34 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 18:36:09 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ft_sqrt(int nb)
 	return (0);
 }
 
-void			initialize_matrice(int mat[20][20])
+void			initialize_matrice(char mat[20][20])
 {
 	int i;
 	int j;
@@ -52,7 +52,7 @@ void			initialize_matrice(int mat[20][20])
 	}
 }
 
-void			print_matrice(int mat[20][20], int size)
+void			print_matrice(char mat[20][20], int size)
 {
 	int i;
 	int j;
@@ -76,7 +76,7 @@ void			print_matrice(int mat[20][20], int size)
 	}
 }
 
-int				next_position(int mat[20][20], t_piece *tetris, int *size, int nb_pieces)
+int				next_position(char mat[20][20], t_piece *tetris, int *size, int nb_pieces)
 {
 	clean_matrice_from(mat, tetris, tetris->letter, nb_pieces);
 	(*size)++;

@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 10:13:35 by vlaroque          #+#    #+#              #
-#    Updated: 2018/12/14 11:12:39 by vlaroque         ###   ########.fr        #
+#    Updated: 2018/12/15 18:33:41 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,11 @@ fclean : clean
 	rm -Rf $(NAME)
 	make -C libft fclean
 
-.PHONY : clean fclean
+.PHONY : clean fclean re norme
 
 re :
 	@$(MAKE) fclean
 	@$(MAKE) all
+
+norme :
+	norminette $(SRC)

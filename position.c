@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 18:07:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 18:36:10 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void				clean_matrice_from(int mat[20][20], t_piece *pieces, int value, int nb_pieces)
+void				clean_matrice_from(char mat[20][20], t_piece *pieces, int value, int nb_pieces)
 {
 	int i;
 	int j;
@@ -41,7 +41,7 @@ void				clean_matrice_from(int mat[20][20], t_piece *pieces, int value, int nb_p
 	}
 }
 
-static int			i_clone_matrice(int mat[20][20], t_piece *pieces, int ref_col,
+static int			i_clone_matrice(char mat[20][20], t_piece *pieces, int ref_col,
 						int ref_lin)
 {
 	int i;
@@ -64,7 +64,7 @@ static int			i_clone_matrice(int mat[20][20], t_piece *pieces, int ref_col,
 	return (1);
 }
 
-static int			i_touch_tetris(int mat[20][20], t_piece *pieces, int *ref_col,
+static int			i_touch_tetris(char mat[20][20], t_piece *pieces, int *ref_col,
 					int *ref_lin, int *size)
 {
 	int i;
@@ -90,7 +90,7 @@ static int			i_touch_tetris(int mat[20][20], t_piece *pieces, int *ref_col,
 	return (i_touch);
 }
 
-int					i_check_tetris(int mat[20][20], t_piece *pieces, int *ref_col,
+int					i_check_tetris(char mat[20][20], t_piece *pieces, int *ref_col,
 					int *ref_lin, int *size)
 {
 	int i_touch;

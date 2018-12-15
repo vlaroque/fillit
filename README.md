@@ -29,3 +29,6 @@ i_check_solution() == solution.c
 	* time fillit minigrille : 0.35s
 	* time fillit petitegrille : 128.19s
 	* time fillit demigrille : 447.25s
+* passage en chars
+	* time fillit minigrille : 0.38s
+	* * time fillit petitegrille : 136.93s

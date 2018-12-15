@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:16:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 18:23:23 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/15 19:20:03 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void			make_iter(int mat[20][20], t_piece *pieces, int *az, int *size, int *xstart, int *ystart, int nb_pieces)
+static void			make_iter(char mat[20][20], t_piece *pieces, int *az, int *size, int *xstart, int *ystart, int nb_pieces)
 {
 	*xstart = pieces[*az].posx;
 	*ystart = pieces[*az].posy;
@@ -32,7 +32,7 @@ static void			make_iter(int mat[20][20], t_piece *pieces, int *az, int *size, in
 	}
 }
 
-static void			make_move(int mat[20][20], t_piece *pieces, int *az, int *size, int *xstart, int *ystart, int nb_pieces)
+static void			make_move(char mat[20][20], t_piece *pieces, int *az, int *size, int *xstart, int *ystart, int nb_pieces)
 {
 	if (*az == 0)
 	{
@@ -57,11 +57,11 @@ static void			make_init(t_piece *pieces, int *az, int *xstart, int *ystart)
 
 int					i_check_solution(int nb_pieces, int size, t_piece *pieces)
 {
-	int	ret;
-	int	xstart;
-	int	ystart;
-	int	mat[20][20];
-	int	az;
+	int		ret;
+	int		xstart;
+	int		ystart;
+	char	mat[20][20];
+	int		az;
 
 	az = 0;
 	xstart = 0;
