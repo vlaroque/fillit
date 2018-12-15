@@ -18,17 +18,24 @@ i_check_solution() == solution.c
 			> clean_matrice_from	ND		supprimes toutes les lettres apres l'ASCII value 
 											et met toutes les positions de celles ci a 0 dans le tableau
 			> next_position
-				clean_matrice_from	NDi
+				clean_matrice_from	ND
 
 * time fillit petitegrille : 5.63s
 
 * grille de tab reduite.
 	* time fillit minigrille : 4.76s
 	* time fillit petitegrille : 1500s
-* supression variables globales
+* supression variables globales pour le tableau buff
 	* time fillit minigrille : 0.35s
 	* time fillit petitegrille : 128.19s
 	* time fillit demigrille : 447.25s
 * passage en chars
 	* time fillit minigrille : 0.38s
-	* * time fillit petitegrille : 136.93s
+	* time fillit petitegrille : 136.93s
+
+Futures updates:
+* Faire une structure pour les pieces contenant
+	* t_pieces *pieces
+	* int *az (piece en cours de traitement)
+	* int *nb_pieces
+* Mettre des a tous les endroits possibles
