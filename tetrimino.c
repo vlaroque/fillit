@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 12:06:19 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/15 09:28:00 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/16 11:32:25 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_num(int nbr, char position)
 		nbr = nbr / 10;
 		position++;
 	}
-	return(nbr % 10);
+	return (nbr % 10);
 }
 
 int		ft_sqrt_plus(int nbr)

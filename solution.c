@@ -6,47 +6,52 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:16:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/16 10:43:47 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/16 11:59:05 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void			make_iter(char mat[20][20], t_piece *pieces, int *az, int *size, t_pos *pos)
+static t_pos	make_iter(char mat[20][20], t_piece *pieces, int *az, int *size)
 {
-	pos->x = pieces[*az].posx;
-	pos->y = pieces[*az].posy;
+	t_pos pos;
+
+	pos.x = pieces[*az].posx;
+	pos.y = pieces[*az].posy;
 	clean_matrice_from(mat, pieces, pieces[*az].letter);
-	if (pos->x < *size - 1)
-		(pos->x)++;
-	else if (pos->y < *size - 1)
+	if (pos.x < *size - 1)
+		(pos.x)++;
+	else if (pos.y < *size - 1)
 	{
-		pos->x = 0;
-		(pos->y)++;
+		pos.x = 0;
+		(pos.y)++;
 	}
 	else
 	{
-		pos->x = 0;
-		pos->y = 0;
+		pos.x = 0;
+		pos.y = 0;
 		next_position(mat, &pieces[*az], size);
 	}
+	return (pos);
 }
 
-static void			make_move(char mat[20][20], t_piece *pieces, int *az, int *size, t_pos *pos)
+static t_pos	make_move(char mat[20][20], t_piece *pieces, int *az, int *size)
 {
+	t_pos pos;
+
 	if (*az == 0)
 	{
-		pos->y = 0;
-		pos->x = 0;
+		pos.y = 0;
+		pos.x = 0;
 		next_position(mat, &pieces[*az], size);
-		return ;
+		return (pos);
 	}
 	if (*az)
 		(*az)--;
-	make_iter(mat, pieces, az, size, pos);
+	return (pos = make_iter(mat, pieces, az, size));
 }
 
-static void			make_init(t_piece *pieces, int *az, t_pos *pos)
+static void		make_init(t_piece *pieces, int *az, t_pos *pos)
 {
 	pieces[*az].posx = pos->x;
 	pieces[*az].posy = pos->y;
@@ -55,36 +60,31 @@ static void			make_init(t_piece *pieces, int *az, t_pos *pos)
 	(*az)++;
 }
 
-int					i_check_solution(int nb_pieces, int size, t_piece *pieces)
+int				i_check_solution(int nb_pieces, int *size,
+				t_piece *pieces, char mat[20][20])
 {
 	int		ret;
 	t_pos	pos;
-	char	mat[20][20];
 	int		az;
 
 	az = 0;
 	pos.x = 0;
 	pos.y = 0;
 	ret = 1;
-	initialize_matrice(mat);
 	while (1)
 	{
 		while (az < nb_pieces)
 		{
-			while ((ret = i_check_tetris(mat, &pieces[az], &pos, &size)))
+			while ((ret = i_check_tetris(mat, &pieces[az], &pos, size)))
 			{
 				make_init(pieces, &az, &pos);
 				if (az == nb_pieces && ret)
 					break ;
 			}
 			if (az == nb_pieces && ret)
-			{
-				print_matrice(mat, size);
-				return (1);
-			}
+				return (*size);
 			if (!ret)
-				make_move(mat, pieces, &az, &size, &pos);
+				pos = make_move(mat, pieces, &az, size);
 		}
 	}
-	return (1);
 }
