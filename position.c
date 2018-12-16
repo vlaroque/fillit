@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 20:57:20 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/16 10:43:48 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void				clean_matrice_from(char mat[20][20], t_piece *pieces, int value, int nb_pieces)
+void				clean_matrice_from(char mat[20][20], t_piece *pieces, int value)
 {
 	int i;
 	int j;
@@ -32,7 +32,7 @@ void				clean_matrice_from(char mat[20][20], t_piece *pieces, int value, int nb_
 	if (value == 'A')
 	{
 		i = value - 'A';
-		while (i < nb_pieces)
+		while (i < 26)
 		{
 			pieces[i].posx = 0;
 			pieces[i].posy = 0;

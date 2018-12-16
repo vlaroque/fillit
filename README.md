@@ -24,7 +24,7 @@ i_check_solution() == solution.c
 
 * grille de tab reduite.
 	* time fillit minigrille : 4.76s
-	* time fillit petitegrille : 1500s
+	* time fillit petitegrille : ~1500s
 * supression variables globales pour le tableau buff
 	* time fillit minigrille : 0.35s
 	* time fillit petitegrille : 128.19s
@@ -32,6 +32,12 @@ i_check_solution() == solution.c
 * passage en chars
 	* time fillit minigrille : 0.38s
 	* time fillit petitegrille : 136.93s
+* suppression variable nb_pieces dans toutes les sous fonctions et clean de la table entiere;
+	* time fillit minigrille : 0.35s
+	* time fillit petitegrille : 123.00s
+	* itme fillit demigrille : 420.58s
+
+
 
 Futures updates:
 * Faire une structure pour les pieces contenant

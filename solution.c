@@ -6,17 +6,17 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:16:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/15 21:20:13 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/16 10:43:47 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void			make_iter(char mat[20][20], t_piece *pieces, int *az, int *size, t_pos *pos, int nb_pieces)
+static void			make_iter(char mat[20][20], t_piece *pieces, int *az, int *size, t_pos *pos)
 {
 	pos->x = pieces[*az].posx;
 	pos->y = pieces[*az].posy;
-	clean_matrice_from(mat, pieces, pieces[*az].letter, nb_pieces);
+	clean_matrice_from(mat, pieces, pieces[*az].letter);
 	if (pos->x < *size - 1)
 		(pos->x)++;
 	else if (pos->y < *size - 1)
@@ -28,22 +28,22 @@ static void			make_iter(char mat[20][20], t_piece *pieces, int *az, int *size, t
 	{
 		pos->x = 0;
 		pos->y = 0;
-		next_position(mat, &pieces[*az], size, nb_pieces);
+		next_position(mat, &pieces[*az], size);
 	}
 }
 
-static void			make_move(char mat[20][20], t_piece *pieces, int *az, int *size, t_pos *pos, int nb_pieces)
+static void			make_move(char mat[20][20], t_piece *pieces, int *az, int *size, t_pos *pos)
 {
 	if (*az == 0)
 	{
 		pos->y = 0;
 		pos->x = 0;
-		next_position(mat, &pieces[*az], size, nb_pieces);
+		next_position(mat, &pieces[*az], size);
 		return ;
 	}
 	if (*az)
 		(*az)--;
-	make_iter(mat, pieces, az, size, pos, nb_pieces);
+	make_iter(mat, pieces, az, size, pos);
 }
 
 static void			make_init(t_piece *pieces, int *az, t_pos *pos)
@@ -83,7 +83,7 @@ int					i_check_solution(int nb_pieces, int size, t_piece *pieces)
 				return (1);
 			}
 			if (!ret)
-				make_move(mat, pieces, &az, &size, &pos, nb_pieces);
+				make_move(mat, pieces, &az, &size, &pos);
 		}
 	}
 	return (1);
