@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:34:25 by frivaton          #+#    #+#             */
-/*   Updated: 2018/12/16 11:34:22 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/18 11:45:23 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static int	i_clone_matrice(char mat[20][20], t_piece *pieces, t_pos *pos)
 	int j;
 
 	i = 0;
-	while (i < 4)
+	while (i < pieces->heigth)
 	{
 		j = 0;
-		while (j < 4)
+		while (j < pieces->width)
 		{
 			if (pieces->tab[i][j])
 				mat[pos->y + i][pos->x + j] = pieces->tab[i][j];
@@ -72,10 +72,10 @@ static int	i_touch_tetris(char mat[20][20], t_piece *pieces,
 
 	i = 0;
 	i_touch = 0;
-	while (i < 4 && !i_touch)
+	while (i < pieces->heigth && !i_touch)
 	{
 		j = 0;
-		while (j < 4 && !i_touch)
+		while (j < pieces->width && !i_touch)
 		{
 			if (pieces->tab[i][j] && ((pos->y + i) >= *size ||
 						(pos->x + j) >= *size))

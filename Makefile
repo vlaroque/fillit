@@ -6,7 +6,7 @@
 #    By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 10:13:35 by vlaroque          #+#    #+#              #
-#    Updated: 2018/12/15 18:33:41 by vlaroque         ###   ########.fr        #
+#    Updated: 2018/12/18 13:32:35 by vlaroque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ $(NAME) : $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFT):
-		make -C libft
+	make -C libft
 
 clean :
 	rm -Rf $(OBJ)
@@ -43,4 +43,4 @@ re :
 	@$(MAKE) all
 
 norme :
-	norminette $(SRC)
+	norminette $(SRC) fillit.h

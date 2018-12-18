@@ -6,13 +6,13 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:13:34 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/16 11:37:53 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/18 13:28:37 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	tetri_filler(t_piece *onepiece, int pce, int shape)
+static void		tetri_filler(t_piece *onepiece, int pce, int shape)
 {
 	int		pos;
 
@@ -28,9 +28,13 @@ void	tetri_filler(t_piece *onepiece, int pce, int shape)
 	onepiece->tab[ft_num(shape, 6)][ft_num(shape, 7)] = onepiece->letter;
 	onepiece->posx = 0;
 	onepiece->posy = 0;
+	onepiece->heigth = ft_maximum(ft_num(shape, 0), ft_num(shape, 2),
+						ft_num(shape, 4), ft_num(shape, 6));
+	onepiece->width = ft_maximum(ft_num(shape, 1), ft_num(shape, 3),
+						ft_num(shape, 5), ft_num(shape, 7));
 }
 
-int		tetri_normaliser(int shape)
+static int		tetri_normaliser(int shape)
 {
 	int			tmp;
 	int			i;
@@ -52,7 +56,7 @@ int		tetri_normaliser(int shape)
 	return (0);
 }
 
-t_piece	*tetri_analyser(char *str, int count, t_piece *pieces)
+static t_piece	*tetri_analyser(char *str, int count, t_piece *pieces)
 {
 	int		pce;
 	int		i;
@@ -79,7 +83,7 @@ t_piece	*tetri_analyser(char *str, int count, t_piece *pieces)
 	return (pieces);
 }
 
-int		file_parsing(char *str)
+static int		file_parsing(char *str)
 {
 	int		i;
 	int		j;
@@ -104,7 +108,7 @@ int		file_parsing(char *str)
 	return (0);
 }
 
-t_piece	*file_analyser(int fd, int *nbr)
+t_piece			*file_analyser(int fd, int *nbr)
 {
 	char	*str;
 	int		rd;

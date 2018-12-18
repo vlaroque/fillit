@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 12:06:19 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/16 11:32:25 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/18 12:30:55 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,12 @@ int		ft_num(int nbr, char position)
 	return (nbr % 10);
 }
 
-int		ft_sqrt_plus(int nbr)
+int		ft_maximum(int a, int b, int c, int d)
 {
-	long long	root;
+	int			i;
 
-	if (nbr < 0)
-		return (0);
-	root = 0;
-	while (root * root <= (long long)nbr)
-	{
-		if (root * root == nbr)
-			return (root);
-		root++;
-	}
-	return (root);
+	i = 0;
+	while ((a - i > 0) || (b - i > 0) || (c - i > 0) || (d - i > 0))
+		i++;
+	return (i + 1);
 }
