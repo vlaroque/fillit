@@ -6,7 +6,7 @@
 /*   By: vlaroque <vlaroque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 09:13:34 by vlaroque          #+#    #+#             */
-/*   Updated: 2018/12/18 13:28:37 by vlaroque         ###   ########.fr       */
+/*   Updated: 2018/12/19 14:27:14 by vlaroque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_piece			*file_analyser(int fd, int *nbr)
 	char	*str;
 	int		rd;
 	t_piece	*pieces;
+	t_piece	*save;
 
 	if (!(str = (char *)ft_memalloc(BUFF_SIZE)))
 		return (0);
@@ -121,13 +122,15 @@ t_piece			*file_analyser(int fd, int *nbr)
 		free(str);
 		return (NULL);
 	}
+	save = pieces;
 	ft_bzero(pieces, 27 * sizeof(t_piece));
 	if (((rd = read(fd, str, BUFF_SIZE)) >= 546) ||
 	((*nbr = file_parsing(str)) == 0) ||
-	((pieces = tetri_analyser(str, *nbr, pieces)) == NULL))
+	((pieces = tetri_analyser(str, *nbr, pieces)) == NULL) ||
+	((rd + 1) % 21 != 0))
 	{
-		ft_strdel(&str);
-		ft_memdel((void *)&pieces);
+		free(str);
+		free(save);
 		return (NULL);
 	}
 	ft_strdel(&str);
